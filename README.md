@@ -6,7 +6,7 @@ A test applications demonstrates basic form authentication according to the next
 - token or cookie needs to be validated by the backend on every reload. 
 - user should be redirected away from pages if the token or cookie has expired.
 
-Implemented using Symfony 4.4. Checking that login email belongs to @sunland.dk domain implemented using Vanilla JS. 
+Implemented using Symfony 4.4 (core functionality) and Vanilla JS (checking that login email belongs to **@sunland.dk** domain). 
 
 ## Setup and run the app
 
