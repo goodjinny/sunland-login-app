@@ -1,22 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login app!{% endblock %}
+{% block title %}Login page | Login app{% endblock %}
+
+{% block page_title %}
+    <h1>Login</h1>
+{% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-sm-7">
             <form method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
-
-                {% if app.user %}
-                    <div class="mb-3">
-                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                    </div>
-                {% endif %}
-
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <div class="form-group">
                     <label for="inputEmail">Email address</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>

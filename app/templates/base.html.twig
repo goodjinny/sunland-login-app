@@ -19,8 +19,16 @@
     </head>
     <body>
         <div class="container">
-            {% block body %}
+            {% block page_title %}
                 <h1>Index page</h1>
+            {% endblock %}
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as <b>{{ app.user.username }}</b> | <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            {% block body %}
                 <a href="{{ path('login') }}">Login</a>
             {% endblock %}
         </div>

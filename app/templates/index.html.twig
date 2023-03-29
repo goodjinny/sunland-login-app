@@ -2,7 +2,14 @@
 
 {% block title %}Login app!{% endblock %}
 
-{% block body %}
+{% block page_title %}
     <h1>Index page</h1>
-    <a href="{{ path('app_login') }}">Login</a>
+{% endblock %}
+
+{% block body %}
+    {% if app.user and app.user.isAdmin %}
+        <a href="{{ path('app_admin') }}">Admin</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Login</a>
+    {% endif %}
 {% endblock %}

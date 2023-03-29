@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login app!{% endblock %}
+{% block title %}Admin page | Login app{% endblock %}
+
+{% block page_title %}
+    <h1>Admin page</h1>
+{% endblock %}
 
 {% block body %}
-    <h1>Admin page</h1>
-    <a href="{{ path('app_logout') }}">Logout</a>
+    <a href="{{ path('app_index') }}"><< Index</a>
 {% endblock %}
