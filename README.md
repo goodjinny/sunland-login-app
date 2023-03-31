@@ -20,3 +20,10 @@ Implemented using Symfony 4.4 (core functionality) and Vanilla JS (checking that
 8. Use next credentials for success user login:
    - email: **admin@sunland.dk**
    - password: **some_secure_password**
+ 
+## Features
+
+### Create admin user from console
+To create admin user, run next command:
+
+`docker exec -ti sunland_login_app bin/console app:create-admin-user admin_email@sunland.dk admin_password`

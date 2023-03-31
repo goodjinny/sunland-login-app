@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Validator\Constraint as CustomConstraint;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity(fields={"email"}, message="This email is already used")
+ * @CustomConstraint\AdminUserEmailDomain
  */
 class User implements UserInterface
 {
@@ -24,6 +29,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     *
+     * @Assert\NotNull
+     * @Assert\Email
      */
     private $email;
 
