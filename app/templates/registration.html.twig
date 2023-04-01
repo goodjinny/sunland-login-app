@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration page | Login app{% endblock %}
+
+{% block page_title %}
+    <h1>Registration</h1>
+{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        {% if userRegistered %}
+            <div class="col-sm-7">
+                <div>User was successfully registered! <a href="{{ path('app_login') }}">Login</a>. </div>
+            </div>
+        {% else %}
+            <div class="col-sm-7">
+                {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.password) }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                {{ form_end(form) }}
+            </div>
+        {% endif %}
+    </div>
+    <br>
+    <a href="{{ path('app_index') }}">Back to index</a>
+{% endblock %}
+
+

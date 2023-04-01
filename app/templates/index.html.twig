@@ -7,9 +7,11 @@
 {% endblock %}
 
 {% block body %}
-    {% if app.user and app.user.isAdmin %}
-        <a href="{{ path('app_admin') }}">Admin</a>
+    {% if app.user %}
+        {% if app.user.isAdmin %}
+            <a href="{{ path('app_admin') }}">Admin</a>
+        {% endif %}
     {% else %}
-        <a href="{{ path('app_login') }}">Login</a>
+        <a href="{{ path('app_login') }}">Login</a> | <a href="{{ path('app_registration') }}">Register</a>
     {% endif %}
 {% endblock %}

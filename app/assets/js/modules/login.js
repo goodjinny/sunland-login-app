@@ -11,6 +11,7 @@ let login = {
         }
 
         form.addEventListener('submit', function (e) {
+            return; //temporarily disable checking by domain, remove to enable
             let emailField = document.getElementById('inputEmail');
             const regex = new RegExp(login.emailPattern);
             if (regex.test(emailField.value) === false) {
@@ -19,7 +20,6 @@ let login = {
             }
         })
     },
-
 }
 
 export {login}

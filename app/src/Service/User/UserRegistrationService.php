@@ -23,11 +23,15 @@ class UserRegistrationService
         $this->passwordEncoder = $passwordEncoder;
     }
 
+    public function registerUser(User $user, string $plainPassword)
+    {
+        $user->setPassword($this->passwordEncoder->encodePassword($user, $plainPassword));
+        $user->setRoles([User::ROLE_USER]);
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
     /**
-     * @param string $email
-     * @param string $password
-     * @return void
-     *
      * @throws ValidationException
      */
     public function registerAdmin(string $email, string $password): void

@@ -30,10 +30,10 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      *
-     * @Assert\NotNull
+     * @Assert\NotBlank
      * @Assert\Email
      */
-    private $email;
+    private $email = null;
 
     /**
      * @ORM\Column(type="json")
@@ -41,10 +41,17 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     * 
+     * @Assert\NotBlank
+     */
+    private $firstName = null;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
-    private $password;
+    private $password = null;
 
     public function getId(): ?int
     {
@@ -94,7 +101,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -102,6 +109,18 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName($firstName): self
+    {
+        $this->firstName = $firstName;
 
         return $this;
     }
