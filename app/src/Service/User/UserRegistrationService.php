@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Exception\ValidationException;
 use App\Traits\EntityManagerTrait;
 use App\Traits\ValidatorTrait;
+use App\Validator\Constraint as CustomConstraint;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserRegistrationService
@@ -41,7 +42,17 @@ class UserRegistrationService
             throw new ValidationException($this->extractFirstErrorFromViolationList($errors));
         }
 
+        $this->validateUserPassword($password);
         $this->em->persist($user);
         $this->em->flush();
+    }
+
+    private function validateUserPassword(string $password): void
+    {
+        $errors = $this->validator->validate($password, new CustomConstraint\UserPasswordComplexity());
+
+        if (count($errors) > 0) {
+            throw new ValidationException($this->extractFirstErrorFromViolationList($errors));
+        }
     }
 }
