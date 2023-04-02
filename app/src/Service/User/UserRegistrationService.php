@@ -9,6 +9,7 @@ use App\Exception\ValidationException;
 use App\Traits\EntityManagerTrait;
 use App\Traits\ValidatorTrait;
 use App\Validator\Constraint as CustomConstraint;
+use App\Validator\ValidationGroups;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserRegistrationService
@@ -40,7 +41,7 @@ class UserRegistrationService
         $user->setEmail($email);
         $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
         $user->setRoles([User::ROLE_ADMIN]);
-        $errors = $this->validator->validate($user);
+        $errors = $this->validator->validate($user, null, ValidationGroups::CREATE_ADMIN);
 
         if (count($errors) > 0) {
             throw new ValidationException($this->extractFirstErrorFromViolationList($errors));

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use App\Validator\Constraint as CustomConstraint;
+use App\Validator\ValidationGroups;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -30,8 +31,8 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      *
-     * @Assert\NotBlank
-     * @Assert\Email
+     * @Assert\NotBlank(groups={ValidationGroups::USER_REGISTRATION, ValidationGroups::CREATE_ADMIN})
+     * @Assert\Email(groups={ValidationGroups::USER_REGISTRATION, ValidationGroups::CREATE_ADMIN})
      */
     private $email = null;
 
@@ -43,13 +44,15 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", nullable=true)
      * 
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={ValidationGroups::USER_REGISTRATION})
      */
     private $firstName = null;
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * 
+     * @Assert\NotBlank(groups={ValidationGroups::USER_REGISTRATION, ValidationGroups::CREATE_ADMIN})
      */
     private $password = null;
 
