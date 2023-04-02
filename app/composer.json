@@ -76,7 +76,9 @@
         "app:database-load-fixtures": [
             "bin/console doctrine:fixtures:load --no-interaction",
             "echo DONE"
-        ]
+        ],
+        "code-style": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run --config=.php-cs-fixer.php -v --diff",
+        "code-style-fix": " PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php -v"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -90,6 +92,7 @@
     "require-dev": {
         "dama/doctrine-test-bundle": "v7.0.0",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "friendsofphp/php-cs-fixer": "v2.19.3",
         "symfony/browser-kit": "4.4.*",
         "symfony/css-selector": "4.4.*",
         "symfony/phpunit-bridge": "^6.2",

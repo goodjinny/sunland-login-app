@@ -16,9 +16,9 @@ class LoginController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-         if ($user !== null) {
-             return $this->redirectToRoute($user->isAdmin() ? 'app_admin' : 'app_index');
-         }
+        if (null !== $user) {
+            return $this->redirectToRoute($user->isAdmin() ? 'app_admin' : 'app_index');
+        }
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();

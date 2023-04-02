@@ -24,13 +24,11 @@ trait ValidatorTrait
     }
 
     /**
-     * @param ConstraintViolationList $violationList
-     * @return string|null
      * @throws \Exception
      */
     private function extractFirstErrorFromViolationList(ConstraintViolationList $violationList): ?string
     {
-        if ($violationList->count() === 0) {
+        if (0 === $violationList->count()) {
             return null;
         }
 

@@ -30,7 +30,7 @@ class AdminUserEmailDomainValidator extends ConstraintValidator
         }
 
         if (!$entity instanceof User) {
-            throw new ConstraintDefinitionException(sprintf("%s constraint could be used with %s entity only", self::class, User::class));
+            throw new ConstraintDefinitionException(sprintf('%s constraint could be used with %s entity only', self::class, User::class));
         }
 
         if (!$entity->isAdmin()) {

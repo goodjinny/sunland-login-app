@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace App\Validator\Constraint;
 
-use App\Entity\User;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
-use Symfony\Component\Validator\Exception\UnexpectedValueException;
 
 class UserPasswordComplexityValidator extends ConstraintValidator
 {

@@ -18,7 +18,6 @@ class LoginControllerTest extends DatabaseDependantTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertSelectorTextContains('html h1', 'Login');
-
     }
 
     public function testUserLogin(): void
@@ -41,7 +40,7 @@ class LoginControllerTest extends DatabaseDependantTestCase
         $crawler = $client->request('GET', '/login');
         $buttonCrawlerNode = $crawler->selectButton('Submit');
         $form = $buttonCrawlerNode->form([
-            'email'    => 'admin@sunland.dk',
+            'email' => 'admin@sunland.dk',
             'password' => '!SecurePassword9',
         ]);
         $client->submit($form);

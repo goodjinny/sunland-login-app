@@ -20,7 +20,7 @@ class CreateAdminUserCommandTest extends DatabaseDependantTestCase
 
         $commandTester->execute([
             'email' => 'admin@sunland.dk',
-            'password' => '!TestPassword379'
+            'password' => '!TestPassword379',
         ]);
         $this->assertStringContainsString('Admin user was successfully registered', $commandTester->getDisplay());
 
@@ -38,7 +38,7 @@ class CreateAdminUserCommandTest extends DatabaseDependantTestCase
 
         $commandTester->execute([
             'email' => 'admin@sunland.dk',
-            'password' => 'weak-password'
+            'password' => 'weak-password',
         ]);
         $this->assertStringContainsString('[ERROR] Password should contain minimum eight characters', $commandTester->getDisplay());
 

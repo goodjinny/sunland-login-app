@@ -29,7 +29,7 @@ class RegistrationControllerTest extends DatabaseDependantTestCase
         $crawler = $client->request('GET', '/registration');
         $buttonCrawlerNode = $crawler->selectButton('Submit');
         $form = $buttonCrawlerNode->form([
-            'user_registration[firstName]'  => 'Test User',
+            'user_registration[firstName]' => 'Test User',
             'user_registration[email]' => 'test_user@gmail.com',
             'user_registration[password][first]' => '!SecurePassword9',
             'user_registration[password][second]' => '!SecurePassword9',

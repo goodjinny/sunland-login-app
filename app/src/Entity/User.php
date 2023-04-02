@@ -43,7 +43,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * 
+     *
      * @Assert\NotBlank(groups={ValidationGroups::USER_REGISTRATION})
      */
     private $firstName = null;
@@ -51,7 +51,7 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * 
+     *
      * @Assert\NotBlank(groups={ValidationGroups::USER_REGISTRATION, ValidationGroups::CREATE_ADMIN})
      */
     private $password = null;
